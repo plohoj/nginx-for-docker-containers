@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  local-nginx:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: local-nginx
+    image: local-nginx
+    restart: unless-stopped
+    network_mode: bridge
+    ports:
+      - 80:80
+    external_links:
+      - portainer
+      - GitLab:gitlab
